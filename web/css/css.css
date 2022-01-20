@@ -1,0 +1,16 @@
+.cabecera {
+    margin: auto;
+    width: 50%;
+    height: 10vh;
+    background: red;
+}
+
+table{
+    margin: auto;
+    border: 3px solid green;
+    padding: 10px;
+}
+input{
+    width: 20vh;
+    height: 20vh;
+}
