@@ -19,6 +19,7 @@ public class juego {
     int c2;
     int c3;
     
+    
     public boolean jugador1win(){
          
         boolean traya = false;
