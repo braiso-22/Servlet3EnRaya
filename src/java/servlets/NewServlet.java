@@ -4,7 +4,9 @@ package servlets;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -35,38 +37,17 @@ public class NewServlet extends HttpServlet {
 
         try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-
-            out.println("<!DOCTYPE html>\n"
-                    + "<html>\n"
-                    + "\n"
-                    + "<head>\n"
-                    + "    <link rel=\"stylesheet\" href=\"css.css\">\n"
-                    + "</head>\n"
-                    + "\n"
-                    + "<body>\n"
-                    + "    <table >\n"
-                    + "        <form method=\"get\">\n"
-                    + "            <tr>\n"
-                    + "                <td><input type=\"button\"></td>\n"
-                    + "                <td><input type=\"button\"></td>\n"
-                    + "                <td><input type=\"button\"></td>\n"
-                    + "            </tr>\n"
-                    + "            <tr>\n"
-                    + "                <td><input type=\"button\"></td>\n"
-                    + "                <td><input type=\"button\"></td>\n"
-                    + "                <td><input type=\"button\"></td>\n"
-                    + "            </tr>\n"
-                    + "            <tr>\n"
-                    + "                <td><input type=\"button\"></td>\n"
-                    + "                <td><input type=\"button\"></td>\n"
-                    + "                <td><input type=\"button\"></td>\n"
-                    + "            </tr>\n"
-                    + "        </form>\n"
-                    + "\n"
-                    + "    </table>\n"
-                    + "</body>\n"
-                    + "\n"
-                    + "</html>");
+            String cadenaFinal = "";
+            File f = new File("/web/html/juego.html");
+            try ( FileReader fr = new FileReader(f);  BufferedReader bfr = new BufferedReader(fr)) {
+                String cadena;
+                while ((cadena = bfr.readLine()) != null) {
+                    cadenaFinal = cadenaFinal.concat(cadena);
+                }
+            } catch (IOException ex) {
+                System.err.printf("Error:%s\n", ex.getMessage());
+            }
+            out.println(cadenaFinal);
 
         } catch (Exception e) {
 
