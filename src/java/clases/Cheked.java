@@ -1,7 +1,7 @@
 
 package clases;
 import java. util.Scanner;
-import clases.juego;
+import clases.jugador1;
 
 public class Cheked {
     
