@@ -4,9 +4,7 @@ package servlets;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import clases.Controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -37,16 +35,108 @@ public class NewServlet extends HttpServlet {
 
         try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String cadenaFinal = "";
-            File f = new File("/web/html/juego.html");
-            try ( FileReader fr = new FileReader(f);  BufferedReader bfr = new BufferedReader(fr)) {
-                String cadena;
-                while ((cadena = bfr.readLine()) != null) {
-                    cadenaFinal = cadenaFinal.concat(cadena);
-                }
-            } catch (IOException ex) {
-                System.err.printf("Error:%s\n", ex.getMessage());
+            try {
+                String a1 = request.getParameter("A1");
+                String a2 = request.getParameter("A2");
+                String a3 = request.getParameter("A3");
+                String b1 = request.getParameter("B1");
+                String b2 = request.getParameter("B2");
+                String b3 = request.getParameter("B3");
+                String c1 = request.getParameter("C1");
+                String c2 = request.getParameter("C2");
+                String c3 = request.getParameter("C3");
+                 if (a1 != null) {
+                //cont.pasaCasilla(1);
             }
+            if (a2 != null) {
+                //cont.pasaCasilla(2);
+            }
+            if (a3 != null) {
+                //cont.pasaCasilla(2);
+            }
+            if (b1 != null) {
+                //cont.pasaCasilla(2);
+            }
+            if (b2 != null) {
+                //cont.pasaCasilla(2);
+            }
+            if (b3 != null) {
+                //cont.pasaCasilla(2);
+            }
+            if (c1 != null) {
+                //cont.pasaCasilla(2);
+            }
+            if (c2 != null) {
+                //cont.pasaCasilla(2);
+            }
+            if (c3 != null) {
+                //cont.pasaCasilla(2);
+            }
+            } catch (Exception e) {
+
+            }
+
+            String cadenaFinal = "<!DOCTYPE html>\n"
+                    + "<html>\n"
+                    + "\n"
+                    + "    <head>\n"
+                    + "        <title>juego</title>\n"
+                    + "        <style>\n"
+                    + "            .cabecera {\n"
+                    + "                margin: auto;\n"
+                    + "                width: 50%;\n"
+                    + "                height: 10vh;\n"
+                    + "                background: red;\n"
+                    + "            }\n"
+                    + "\n"
+                    + "            table{\n"
+                    + "                margin: auto;\n"
+                    + "                border: 3px solid green;\n"
+                    + "                padding: 10px;\n"
+                    + "            }\n"
+                    + "\n"
+                    + "            input{\n"
+                    + "                width: 20vh;\n"
+                    + "                height: 20vh;\n"
+                    + "                font-size: 15vh;\n"
+                    + "            }\n"
+                    + "\n"
+                    + "        </style>\n"
+                    + "    </head>\n"
+                    + "\n"
+                    + "    <body>\n"
+                    + "        <div class=\"cabecera\">\n"
+                    + "            <h1>3 en raya</h1>\n"
+                    + "        </div>\n"
+                    + "        <form action=\"NewServlet\" method=\"get\">\n"
+                    + "            <table>\n"
+                    + "\n"
+                    + "                <tr>\n"
+                    + "                    <td><input type=\"submit\" name=\"A1\" value=\"\u200e\"></button></td>\n"
+                    + "                    <td><input type=\"submit\" name=\"A2\" value=\"\u200e\"></button></td>\n"
+                    + "                    <td><input type=\"submit\" name=\"A3\" value=\"\u200e\"></button></td>\n"
+                    + "                </tr>\n"
+                    + "                <tr>\n"
+                    + "                    <td><input type=\"submit\" name=\"B1\" value=\"\u200e\"></button></td>\n"
+                    + "                    <td><input type=\"submit\" name=\"B2\" value=\"\u200e\"></button></td>\n"
+                    + "                    <td><input type=\"submit\" name=\"B3\" value=\"\u200e\"></button></td>\n"
+                    + "                </tr>\n"
+                    + "                <tr>\n"
+                    + "                   <td><input type=\"submit\" name=\"C1\" value=\"\u200e\"></button></td>\n"
+                    + "                    <td><input type=\"submit\" name=\"C2\" value=\"\u200e\"></button></td>\n"
+                    + "                    <td><input type=\"submit\" name=\"C3\" value=\"\u200e\"></button></td>\n"
+                    + "                </tr>\n"
+                    + "\n"
+                    + "            </table>\n"
+                    + "        </form>\n"
+                    + "    </body>\n"
+                    + "\n"
+                    + "</html>\n"
+                    + "";
+            Controller cont = new Controller();
+           
+
+            cont.cambiaValores(cadenaFinal);
             out.println(cadenaFinal);
 
         } catch (Exception e) {
