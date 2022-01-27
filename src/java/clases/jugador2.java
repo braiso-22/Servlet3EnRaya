@@ -8,10 +8,10 @@ package clases;
  *
  * @author brais.fernandezvazqu
  */
-public class juego {
-    int a1 = 1;
-    int a2 = 2;
-    int a3 = 3;
+public class jugador2 {
+    int a1;
+    int a2;
+    int a3;
     int b1;
     int b2;
     int b3;
@@ -20,44 +20,44 @@ public class juego {
     int c3;
     
     
-    public boolean jugador1win(){
+    public boolean jugador2win(){
          
         boolean traya = false;
        
         
         // FILA SUPERIOR COMPROBACIÓN DE RESULTADOS
-        if(a1 == 1){
-            if(a2 == 1 && a3 == 1){
+        if(a1 == 2){
+            if(a2 == 2 && a3 == 2){
                traya = true; 
             }
-            if(b1 == 1 && c1 == 1){
+            if(b1 == 2 && c1 == 2){
                 traya = true;
             }
-            if(b2 == 1 && c3 == 1){
+            if(b2 == 2 && c3 == 2){
                 traya = true;
             }  
         }
-        if(a2 == 1){
-            if(b2 == 1 && c2 == 1){
+        if(a2 == 2){
+            if(b2 == 2 && c2 == 2){
                 traya = true;
             }  
         }
-        if(a3 == 1){
-            if(b2 == 1 && c1 == 1){
+        if(a3 == 2){
+            if(b2 == 2 && c1 == 2){
                 traya = true;
             }
         }
         //__________________________________________________________________
         // FILA MEDIO COMPROBACIÓN DE RESULTADOS
-        if(b1 == 1){
-            if(b2 == 1 && b3 == 1){
+        if(b1 == 2){
+            if(b2 == 2 && b3 == 2){
                traya = true; 
             }
         }
         //_________________________________________________________________
         // FILA INFERIOR COMPROBACIÓN DE RESULTADOS
-        if(c1 == 1){
-            if(c2 == 1 && c3 == 1){
+        if(c1 == 2){
+            if(c2 == 2 && c3 == 2){
                traya = true; 
             }
         }
