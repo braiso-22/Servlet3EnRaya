@@ -6,7 +6,6 @@ package clases;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,7 +22,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
 
 /**
  *
@@ -79,38 +77,26 @@ public class GestionArchivos {
     
     public int getValor (int casilla) {
         
-        Element raiz = doc.getDocumentElement();
-            
-        NodeList nodos = doc.getDocumentElement().getChildNodes();
-        
-        return Integer.parseInt(nodos.item(casilla).getTextContent());
+        return Integer.parseInt(casillas.item(casilla).getTextContent());
         
     }
     
     public int[] getCasillas () {
         
-        Element raiz = doc.getDocumentElement();
-            
-        NodeList nodos = doc.getDocumentElement().getChildNodes();
+        int nCasillas = casillas.getLength() -1;
         
-        int nCasillas = nodos.getLength() -1;
-        
-        int[] casillas = new int[nCasillas];
+        int[] arrayCasillas = new int[nCasillas];
         
         for (int i = 0; i < nCasillas; i++)
-            casillas[i] = getValor(i);
+            arrayCasillas[i] = getValor(i);
         
-        return casillas;
+        return arrayCasillas;
         
     }
     
     public void setValor (int casilla, int valor) {
         
-        Element raiz = doc.getDocumentElement();
-            
-        NodeList nodos = doc.getDocumentElement().getChildNodes();
-        
-        nodos.item(casilla).setTextContent(String.valueOf(valor));
+        casillas.item(casilla).setTextContent(String.valueOf(valor));
         
         guardar();
         
@@ -118,11 +104,7 @@ public class GestionArchivos {
     
     public int getTurno () {
         
-        Element raiz = doc.getDocumentElement();
-            
-        NodeList nodos = doc.getDocumentElement().getChildNodes();
-        
-        return Integer.parseInt(nodos.item(9).getTextContent());
+        return Integer.parseInt(casillas.item(9).getTextContent());
         
     }
     
