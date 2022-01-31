@@ -27,9 +27,9 @@ import org.xml.sax.InputSource;
  *
  * @author rodrigo.garciaedreir
  */
-public class GestionArchivos {
+public class FParser {
     
-    private static GestionArchivos gestorArchivo = null;
+    private static FParser gestorArchivo = null;
     
     public static final int A1 = 0;
     public static final int A2 = 1;
@@ -41,12 +41,11 @@ public class GestionArchivos {
     public static final int C2 = 7;
     public static final int C3 = 8;
     public static final int TURNO = 9;
-    
     private File archivo;
     private Document doc;
     private NodeList casillas;
     
-    private GestionArchivos() {
+    private FParser() {
         
         archivo = new File ("src" + File.separator + "recursos" + File.separator + "3ralla.xml");
         
@@ -66,10 +65,10 @@ public class GestionArchivos {
         
     }
     
-    public static GestionArchivos getInstance() {
+    public static FParser getInstance() {
         
         if (gestorArchivo == null)
-            gestorArchivo = new GestionArchivos();
+            gestorArchivo = new FParser();
         
         return gestorArchivo;
         
@@ -127,9 +126,9 @@ public class GestionArchivos {
             transformer.transform(new DOMSource(doc), new StreamResult(archivo));
             
         } catch (TransformerConfigurationException ex) {
-            Logger.getLogger(GestionArchivos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FParser.class.getName()).log(Level.SEVERE, null, ex);
         } catch (TransformerException ex) {
-            Logger.getLogger(GestionArchivos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FParser.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
