@@ -3,20 +3,40 @@
 
     <head>
         <title>juego</title>
-        <link rel="stylesheet" href="../css/css.css">
+        <style>
+            .cabecera {
+                margin: auto;
+                width: 50%;
+                height: 10vh;
+                background: red;
+            }
+
+            table{
+                margin: auto;
+                border: 3px solid green;
+                padding: 10px;
+            }
+
+            button{
+                width: 20vh;
+                height: 20vh;
+                font-size: 15vh;
+            }
+
+        </style>
     </head>
 
     <body>
         <div class="cabecera">
             <h1>3 en raya</h1>
         </div>
-        <form method="get">
+        <form action="NewServlet" method="get">
             <table>
 
                 <tr>
-                    <td><input type="submit" value="%s"></td>
-                    <td><input type="submit" value="%s"></td>
-                    <td><input type="submit" value="%s"></td>
+                    <td><button id="A1" value="A1">%s</button></td>
+                    <td><button id="A2" value="%s">%s</button></td>
+                    <td><button id="A3" value="%s">%s</button></td>
                 </tr>
 
                 <tr>

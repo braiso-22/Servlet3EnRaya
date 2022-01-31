@@ -10,7 +10,8 @@ table{
     border: 3px solid green;
     padding: 10px;
 }
-input{
+
+button{
     width: 20vh;
     height: 20vh;
     font-size: 15vh;
