@@ -11,11 +11,11 @@ package clases;
 public class Controller {
 
     FParser gestorXml;
-    Turno turno;
+    Turno1 turno;
 
     public Controller() {
         gestorXml = FParser.getInstance();
-        turno = new Turno();
+        turno = new Turno1();
     }
 
     public void pasaCasilla(int casilla) {
