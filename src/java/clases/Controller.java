@@ -10,34 +10,47 @@ package clases;
  */
 public class Controller {
 
-    public void pasaCasilla(int casilla) {//getTurno de xabi como parametro boolean
-        //gestorXml.pasarDatos(casilla, parOImpar)
+    FParser gestorXml;
+    Turno turno;
+
+    public Controller() {
+        gestorXml = FParser.getInstance();
+        turno = new Turno();
+    }
+
+    public void pasaCasilla(int casilla) {
+        gestorXml.setValor(casilla, turno.getValorCasilla());
     }
 
     public String cambiaValores(String cadenaFinal) {
-        // int[] valores = gestorXml.getValores() == [0,0,0,0,0,0,0,0,0]
-        String subString = cadenaFinal;
-        cadenaFinal="";
-        /*
-        for(int i =0;i<valores.length;i++){
-        switch(valores[i]){
-        case 0:
-        
-            String[] subStringArray = subString.split("</td>\n", 2);
-            cadenaFinal += subStringArray[0] + "</td>\n";
-            subString =subStringArray[1];
-        
-        case 1:
-        subString = subString.replaceFirst("\u200E", "X");
-        case 2:
-        subString = subString.replaceFirst("\u200E", "O");
-        default:
-        }
-        cadenaFinal+=subString;
-        }
-         */
+        int[] valores = gestorXml.getCasillas();// == [0,0,0,0,0,0,0,0,0];
+        String aux = "";
+        for (int i = 0; i < valores.length; i++) {
+            String[] subStringArray;
+            switch (valores[i]) {
 
-        return cadenaFinal;
+                case 0:
+                    subStringArray = cadenaFinal.split("</td>", 2);
+                    aux += subStringArray[0] + "</td>";
+                    cadenaFinal = subStringArray[1];
+                    break;
+                case 1:
+                    cadenaFinal = cadenaFinal.replaceFirst("\u200E", "X");
+                    subStringArray = cadenaFinal.split("</td>", 2);
+                    aux += subStringArray[0] + "</td>";
+                    cadenaFinal = subStringArray[1];
+                    break;
+                case 2:
+                    cadenaFinal = cadenaFinal.replaceFirst("\u200E", "O");
+                    subStringArray = cadenaFinal.split("</td>", 2);
+                    aux += subStringArray[0] + "</td>";
+                    cadenaFinal = subStringArray[1];
+                    break;
+            }
+
+        }
+
+        return aux + cadenaFinal;
 
     }
 }
