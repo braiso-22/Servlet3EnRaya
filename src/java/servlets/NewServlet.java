@@ -34,6 +34,7 @@ public class NewServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         Controller cont = new Controller();
+
         try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             try {
@@ -46,6 +47,8 @@ public class NewServlet extends HttpServlet {
                 String c1 = request.getParameter("C1");
                 String c2 = request.getParameter("C2");
                 String c3 = request.getParameter("C3");
+                String restart = request.getParameter("clear");
+
                 if (a1 != null) {
                     cont.pasaCasilla(FParser.A1);
                 }
@@ -73,60 +76,86 @@ public class NewServlet extends HttpServlet {
                 if (c3 != null) {
                     cont.pasaCasilla(FParser.C3);
                 }
+                if (cont.finDePartida() || restart != null) {
+                    cont.limpiaCasillas();
+                } else {
+                    cont.pasaTurno();
+                    //TODO cambiar esto porque ahora si empezamos con datos no los muestra y además pasa un turno
+                }
             } catch (Exception e) {
 
             }
 
             String cadena1 = "<!DOCTYPE html>"
                     + "<html>"
-                    + "    <head>"
-                    + "        <title>juego</title>"
-                    + "        <style>"
-                    + "            .cabecera {"
-                    + "                margin: auto;"
-                    + "                width: 50%;"
-                    + "                height: 10vh;"
-                    + "                background: red;"
-                    + "            }"
-                    + "            table{"
-                    + "                margin: auto;"
-                    + "                border: 3px solid green;"
-                    + "                padding: 10px;"
-                    + "            }"
-                    + "            input{"
-                    + "                width: 20vh;"
-                    + "                height: 20vh;"
-                    + "                font-size: 15vh;"
-                    + "            }"
-                    + "        </style>"
-                    + "    </head>"
-                    + "    <body>"
-                    + "        <div class=\"cabecera\">"
-                    + "            <h1>3 en raya</h1>"
-                    + "        </div>"
-                    + "        <form action=\"NewServlet\" method=\"get\">"
-                    + "            <table>"
-                    + "                <tr>"
-                    + "                    <td><input type=\"submit\" name=\"A1\" value=\"\u200e\"></button></td>"
-                    + "                    <td><input type=\"submit\" name=\"A2\" value=\"\u200e\"></button></td>"
-                    + "                    <td><input type=\"submit\" name=\"A3\" value=\"\u200e\"></button></td>"
-                    + "                </tr>"
-                    + "                <tr>"
-                    + "                    <td><input type=\"submit\" name=\"B1\" value=\"\u200e\"></button></td>"
-                    + "                    <td><input type=\"submit\" name=\"B2\" value=\"\u200e\"></button></td>"
-                    + "                    <td><input type=\"submit\" name=\"B3\" value=\"\u200e\"></button></td>"
-                    + "                </tr>"
-                    + "                <tr>"
-                    + "                    <td><input type=\"submit\" name=\"C1\" value=\"\u200e\"></button></td>"
-                    + "                    <td><input type=\"submit\" name=\"C2\" value=\"\u200e\"></button></td>"
-                    + "                    <td><input type=\"submit\" name=\"C3\" value=\"\u200e\"></button></td>"
-                    + "                </tr>"
-                    + "            </table>"
-                    + "        </form>"
-                    + "    </body>"
+                    + "<head>"
+                    + "    <title>juego</title>"
+                    + "    <style>"
+                    + "        .cabecera {"
+                    + "            margin: auto;"
+                    + "            width: 50%;"
+                    + "            height: 10vh;"
+                    + "            background: red;"
+                    + "        }"
                     + ""
-                    + "</html>"
-                    + "";
+                    + "        table {"
+                    + "            margin: auto;"
+                    + "            border: 3px solid green;"
+                    + "            padding: 10px;"
+                    + "        }"
+                    + ""
+                    + "        input {"
+                    + "            width: 20vh;"
+                    + "            height: 20vh;"
+                    + "            font-size: 15vh;"
+                    + "        }"
+                    + ""
+                    + "        table.restart {"
+                    + "            margin: auto;"
+                    + "            border: 3px solid blue;"
+                    + "            width: 50%;"
+                    + "            padding: 10px;"
+                    + "        }"
+                    + ""
+                    + "        input.restart {"
+                    + "            width: 100%;"
+                    + "            height: 10vh;"
+                    + "            font-size: 7vh;"
+                    + "        }"
+                    + "    </style>"
+                    + "</head>"
+                    + "<body>"
+                    + "    <div class=cabecera>"
+                    + "        <h1>3 EN RAYA</h1>"
+                    + "    </div>"
+                    + "    <form action=NewServlet method=get>"
+                    + "        <table>"
+                    + "            <tr>"
+                    + "                <td><input type=submit name=A1 value=\u200e></td>"
+                    + "                <td><input type=submit name=A2 value=\u200e></td>"
+                    + "                <td><input type=submit name=A3 value=\u200e></td>"
+                    + "            </tr>"
+                    + "            <tr>"
+                    + "                <td><input type=submit name=B1 value=\u200e></td>"
+                    + "                <td><input type=submit name=B2 value=\u200e></td>"
+                    + "                <td><input type=submit name=B3 value=\u200e></td>"
+                    + "            </tr>"
+                    + "            <tr>"
+                    + "                <td><input type=submit name=C1 value=\u200e></td>"
+                    + "                <td><input type=submit name=C2 value=\u200e></td>"
+                    + "                <td><input type=submit name=C3 value=\u200e></td>"
+                    + "            </tr>"
+                    + "        </table>"
+                    + "    </form>"
+                    + "    <form>"
+                    + "        <table class=\"restart\">"
+                    + "            <tr>"
+                    + "                <td><input type=submit name=clear value=RESTART class=\"restart\"></td>"
+                    + "            </tr>"
+                    + "        </table>"
+                    + "    </form>"
+                    + "</body>"
+                    + "</html>";
 
             cadena1 = cont.cambiaValores(cadena1);
             out.println(cadena1);
