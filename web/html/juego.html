@@ -1,57 +1,70 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <title>juego</title>
+    <style>
+        .cabecera {
+            margin: auto;
+            width: 50%;
+            height: 10vh;
+            background: red;
+        }
 
-    <head>
-        <title>juego</title>
-        <style>
-            .cabecera {
-                margin: auto;
-                width: 50%;
-                height: 10vh;
-                background: red;
-            }
+        table {
+            margin: auto;
+            border: 3px solid green;
+            padding: 10px;
+        }
 
-            table{
-                margin: auto;
-                border: 3px solid green;
-                padding: 10px;
-            }
+        input {
+            width: 20vh;
+            height: 20vh;
+            font-size: 15vh;
+        }
 
-            button{
-                width: 20vh;
-                height: 20vh;
-                font-size: 15vh;
-            }
+        table.restart {
+            margin: auto;
+            border: 3px solid blue;
+            width: 50%;
+            padding: 10px;
+        }
 
-        </style>
-    </head>
-
-    <body>
-        <div class="cabecera">
-            <h1>3 en raya</h1>
-        </div>
-        <form action="NewServlet" method="get">
-            <table>
-
-                <tr>
-                    <td><button id="A1" value="A1">%s</button></td>
-                    <td><button id="A2" value="%s">%s</button></td>
-                    <td><button id="A3" value="%s">%s</button></td>
-                </tr>
-
-                <tr>
-                    <td><input type="submit" value="%s"></td>
-                    <td><input type="submit" value="%s"></td>
-                    <td><input type="submit" value="%s"></td>
-                </tr>
-                <tr>
-                    <td><input type="submit" value="%s"></td>
-                    <td><input type="submit" value="%s"></td>
-                    <td><input type="submit" value="%s"></td>
-                </tr>
-
-            </table>
-        </form>
-    </body>
-
+        input.restart {
+            width: 100%;
+            height: 10vh;
+            font-size: 7vh;
+        }
+    </style>
+</head>
+<body>
+    <div class=cabecera>
+        <h1>3 EN RAYA</h1>
+    </div>
+    <form action=NewServlet method=get>
+        <table>
+            <tr>
+                <td><input type=submit name=A1 value=\u200e></td>
+                <td><input type=submit name=A2 value=\u200e></td>
+                <td><input type=submit name=A3 value=\u200e></td>
+            </tr>
+            <tr>
+                <td><input type=submit name=B1 value=\u200e></td>
+                <td><input type=submit name=B2 value=\u200e></td>
+                <td><input type=submit name=B3 value=\u200e></td>
+            </tr>
+            <tr>
+                <td><input type=submit name=C1 value=\u200e></td>
+                <td><input type=submit name=C2 value=\u200e></td>
+                <td><input type=submit name=C3 value=\u200e></td>
+            </tr>
+        </table>
+    </form>
+    <form>
+        <table class="restart">
+            <tr>
+                <td><input type=submit name=clear value=RESTART class="restart"></td>
+            </tr>
+        </table>
+    </form>
+</body>
 </html>
