@@ -22,6 +22,19 @@ public class Controller {
         gestorXml.setValor(casilla, turno.getValorCasilla());
     }
 
+    public void limpiaCasillas() {
+        gestorXml.clear();
+    }
+
+    public boolean finDePartida() {
+
+        return turno.getTurnoNum() >= 9;
+    }
+
+    public void pasaTurno() {
+        turno.addTurno();
+    }
+
     public String cambiaValores(String cadenaFinal) {
         int[] valores = gestorXml.getCasillas();// == [0,0,0,0,0,0,0,0,0];
         String aux = "";
