@@ -11,14 +11,16 @@ package clases;
  */
 public class Turno {
 
-    int turno = 0;
+    FParser gestorXml;
+    int turno;
+
+    public Turno() {
+        gestorXml = FParser.getInstance();
+        turno = gestorXml.getTurno();
+    }
 
     public boolean getTurno() {
-        if (turno % 2 == 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return turno % 2 == 0;
     }
 
     public int getTurnoNum() {
@@ -26,7 +28,8 @@ public class Turno {
     }
 
     public void addTurno() {
-
+        turno++;
+        gestorXml.setValor(FParser.TURNO, turno);
     }
 
     int getValorCasilla() {
