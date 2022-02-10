@@ -9,6 +9,8 @@ package clases;
  * @author brais.fernandezvazqu
  */
 public class Win {
+
+    FParser gestorXml = FParser.getInstance();
     int a1;
     int a2;
     int a3;
@@ -18,106 +20,110 @@ public class Win {
     int c1;
     int c2;
     int c3;
-    
-    
-    public boolean jugador1win(){
-         
+
+    public boolean jugador1win(int[] casillas) {
+        a1 = casillas[0];
+        a2 = casillas[1];
+        a3 = casillas[2];
+        b1 = casillas[3];
+        b2 = casillas[4];
+        b3 = casillas[5];
+        c1 = casillas[6];
+        c2 = casillas[7];
+        c3 = casillas[8];
         boolean traya = false;
-       
-        
+
         // FILA SUPERIOR COMPROBACIÓN DE RESULTADOS
-        if(a1 == 1){
-            if(a2 == 1 && a3 == 1){
-               traya = true; 
-            }
-            if(b1 == 1 && c1 == 1){
+        if (a1 == 1) {
+            if (a2 == 1 && a3 == 1) {
                 traya = true;
             }
-            if(b2 == 1 && c3 == 1){
+            if (b1 == 1 && c1 == 1) {
                 traya = true;
-            }  
-        }
-        if(a2 == 1){
-            if(b2 == 1 && c2 == 1){
+            }
+            if (b2 == 1 && c3 == 1) {
                 traya = true;
-            }  
+            }
         }
-        if(a3 == 1){
-            if(b2 == 1 && c1 == 1){
+        if (a2 == 1) {
+            if (b2 == 1 && c2 == 1) {
+                traya = true;
+            }
+        }
+        if (a3 == 1) {
+            if (b2 == 1 && c1 == 1) {
                 traya = true;
             }
         }
         //__________________________________________________________________
         // FILA MEDIO COMPROBACIÓN DE RESULTADOS
-        if(b1 == 1){
-            if(b2 == 1 && b3 == 1){
-               traya = true; 
+        if (b1 == 1) {
+            if (b2 == 1 && b3 == 1) {
+                traya = true;
             }
         }
         //_________________________________________________________________
         // FILA INFERIOR COMPROBACIÓN DE RESULTADOS
-        if(c1 == 1){
-            if(c2 == 1 && c3 == 1){
-               traya = true; 
+        if (c1 == 1) {
+            if (c2 == 1 && c3 == 1) {
+                traya = true;
             }
         }
-    return traya;
-    
+        return traya;
+
     }
 //----------------------------------------------------------------------------//
- 
-    public boolean jugador2win(){
-         
+
+    public boolean jugador2win(int[] casillas) {
+        a1 = casillas[0];
+        a2 = casillas[1];
+        a3 = casillas[2];
+        b1 = casillas[3];
+        b2 = casillas[4];
+        b3 = casillas[5];
+        c1 = casillas[6];
+        c2 = casillas[7];
+        c3 = casillas[8];
         boolean traya = false;
-       
-        
+
         // FILA SUPERIOR COMPROBACIÓN DE RESULTADOS
-        if(a1 == 2){
-            if(a2 == 2 && a3 == 2){
-               traya = true; 
-            }
-            if(b1 == 2 && c1 == 2){
+        if (a1 == 2) {
+            if (a2 == 2 && a3 == 2) {
                 traya = true;
             }
-            if(b2 == 2 && c3 == 2){
+            if (b1 == 2 && c1 == 2) {
                 traya = true;
-            }  
-        }
-        if(a2 == 2){
-            if(b2 == 2 && c2 == 2){
+            }
+            if (b2 == 2 && c3 == 2) {
                 traya = true;
-            }  
+            }
         }
-        if(a3 == 2){
-            if(b2 == 2 && c1 == 2){
+        if (a2 == 2) {
+            if (b2 == 2 && c2 == 2) {
+                traya = true;
+            }
+        }
+        if (a3 == 2) {
+            if (b2 == 2 && c1 == 2) {
                 traya = true;
             }
         }
         //__________________________________________________________________
         // FILA MEDIO COMPROBACIÓN DE RESULTADOS
-        if(b1 == 2){
-            if(b2 == 2 && b3 == 2){
-               traya = true; 
+        if (b1 == 2) {
+            if (b2 == 2 && b3 == 2) {
+                traya = true;
             }
         }
         //_________________________________________________________________
         // FILA INFERIOR COMPROBACIÓN DE RESULTADOS
-        if(c1 == 2){
-            if(c2 == 2 && c3 == 2){
-               traya = true; 
+        if (c1 == 2) {
+            if (c2 == 2 && c3 == 2) {
+                traya = true;
             }
         }
-    return traya;
-    
-    }
-    
-    
-    
-    
-    
-}
+        return traya;
 
-    
-    
-    
-    
+    }
+
+}

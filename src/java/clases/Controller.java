@@ -12,6 +12,7 @@ public class Controller {
 
     FParser gestorXml;
     Turno turno;
+    Win win = new Win();
 
     public Controller() {
         gestorXml = FParser.getInstance();
@@ -24,10 +25,10 @@ public class Controller {
 
     public void limpiaCasillas() {
         gestorXml.clear();
+        gestorXml.setValor(FParser.TURNO, 0);
     }
 
     public boolean finDePartida() {
-
         return turno.getTurnoNum() >= 9;
     }
 
@@ -66,4 +67,17 @@ public class Controller {
         return aux + cadenaFinal;
 
     }
+
+    public boolean isFree(int casilla) {
+        return gestorXml.getValor(casilla) == 0;
+    }
+
+    public boolean ganaX() {
+        return win.jugador1win(gestorXml.getCasillas());
+    }
+
+    public boolean ganaO() {
+        return win.jugador2win(gestorXml.getCasillas());
+    }
+
 }

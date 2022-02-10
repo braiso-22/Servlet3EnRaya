@@ -8,6 +8,8 @@ import clases.Controller;
 import clases.FParser;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Enumeration;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -49,38 +51,69 @@ public class NewServlet extends HttpServlet {
                 String c3 = request.getParameter("C3");
                 String restart = request.getParameter("clear");
 
-                if (a1 != null) {
+                boolean hayParametro = false;
+
+                if (a1 != null && cont.isFree(FParser.A1)) {
                     cont.pasaCasilla(FParser.A1);
+                    hayParametro = true;
                 }
-                if (a2 != null) {
+                if (a2 != null && cont.isFree(FParser.A2)) {
                     cont.pasaCasilla(FParser.A2);
+                    hayParametro = true;
                 }
-                if (a3 != null) {
+                if (a3 != null && cont.isFree(FParser.A3)) {
                     cont.pasaCasilla(FParser.A3);
+                    hayParametro = true;
                 }
-                if (b1 != null) {
+                if (b1 != null && cont.isFree(FParser.B1)) {
                     cont.pasaCasilla(FParser.B1);
+                    hayParametro = true;
                 }
-                if (b2 != null) {
+                if (b2 != null && cont.isFree(FParser.B2)) {
                     cont.pasaCasilla(FParser.B2);
+                    hayParametro = true;
                 }
-                if (b3 != null) {
+                if (b3 != null && cont.isFree(FParser.B3)) {
                     cont.pasaCasilla(FParser.B3);
+                    hayParametro = true;
                 }
-                if (c1 != null) {
+                if (c1 != null && cont.isFree(FParser.C1)) {
                     cont.pasaCasilla(FParser.C1);
+                    hayParametro = true;
                 }
-                if (c2 != null) {
+                if (c2 != null && cont.isFree(FParser.C2)) {
                     cont.pasaCasilla(FParser.C2);
+                    hayParametro = true;
                 }
-                if (c3 != null) {
+                if (c3 != null && cont.isFree(FParser.C3)) {
                     cont.pasaCasilla(FParser.C3);
+                    hayParametro = true;
                 }
+                boolean ganado = false;
+                if (cont.ganaX()) {
+                    response.setContentType("text/html");
+                    out.println("<script type=\"text/javascript\">");
+                    out.println("alert('Gana x');");
+                    out.println("</script>");
+                    ganado = true;
+                    cont.limpiaCasillas();
+                }
+                if (cont.ganaO()) {
+
+                     response.setContentType("text/html");
+                    out.println("<script type=\"text/javascript\">");
+                    out.println("alert('Gana O');");
+                    out.println("</script>");
+                    ganado = true;
+                    cont.limpiaCasillas();
+                }
+
                 if (cont.finDePartida() || restart != null) {
                     cont.limpiaCasillas();
                 } else {
-                    cont.pasaTurno();
-                    //TODO cambiar esto porque ahora si empezamos con datos no los muestra y además pasa un turno
+                    if (hayParametro && !ganado) {
+                        cont.pasaTurno();
+                    }
                 }
             } catch (Exception e) {
 
