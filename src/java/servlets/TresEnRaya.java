@@ -20,8 +20,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author brais.fernandezvazqu
  */
-@WebServlet(urlPatterns = {"/NewServlet"})
-public class NewServlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/TresEnRaya"})
+public class TresEnRaya extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -161,7 +161,7 @@ public class NewServlet extends HttpServlet {
                     + "    <div class=cabecera>"
                     + "        <h1>3 EN RAYA</h1>"
                     + "    </div>"
-                    + "    <form action=NewServlet method=get>"
+                    + "    <form action=TresEnRaya method=get>"
                     + "        <table>"
                     + "            <tr>"
                     + "                <td><input type=submit name=A1 value=\u200e></td>"

@@ -54,6 +54,9 @@ public class Win {
             if (b2 == 1 && c1 == 1) {
                 traya = true;
             }
+            if (b3 == 1 && c3 == 1) {
+                traya = true;
+            }
         }
         //__________________________________________________________________
         // FILA MEDIO COMPROBACIÓN DE RESULTADOS
@@ -105,6 +108,9 @@ public class Win {
         }
         if (a3 == 2) {
             if (b2 == 2 && c1 == 2) {
+                traya = true;
+            }
+            if (b3 == 2 && c3 == 2) {
                 traya = true;
             }
         }
