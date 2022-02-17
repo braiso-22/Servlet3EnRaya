@@ -16,3 +16,7 @@ Trabajo en equipo de Programación de Servicios con Xabier y Rodrigo
 <h2>Imagenes</h2>
 
 ![image](https://user-images.githubusercontent.com/81094589/154519507-a8c41362-e650-40f7-a170-d7de97ec4b35.png)
+![image](https://user-images.githubusercontent.com/81094589/154520947-66a35d29-9a2b-456c-8780-128982942a74.png)
+
+![image](https://user-images.githubusercontent.com/81094589/154520820-a9d8f911-4abd-4bef-9ad6-4653f1726e66.png)
+
