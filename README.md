@@ -1,7 +1,7 @@
 # Servlet3EnRaya
 Trabajo en equipo de Programación de Servicios con Xabier y Rodrigo
 
-#Requisitos
+<h2>Requisitos</h2>
 <ul>
   <li>
     JDK 17
@@ -13,6 +13,6 @@ Trabajo en equipo de Programación de Servicios con Xabier y Rodrigo
     Servidor Apache Tomcat
   </li>
 </ul>
-#Imagenes
+<h2>Imagenes</h2>
 
 ![image](https://user-images.githubusercontent.com/81094589/154519507-a8c41362-e650-40f7-a170-d7de97ec4b35.png)
