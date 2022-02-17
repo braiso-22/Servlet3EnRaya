@@ -4,8 +4,11 @@
  */
 package clases;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -47,7 +50,18 @@ public class FParser {
 
     private FParser() {
 
-        archivo = new File("C:" + File.separator + "Users" + File.separator + "brais.fernandezvazqu" + File.separator + "Desktop" + File.separator + "3ralla.xml");
+        archivo = new File("3ralla.xml");
+
+        try {
+            if (archivo.createNewFile()) {
+                FileWriter fw = new FileWriter(archivo, false);
+                fw.write("<partida><A1>0</A1><A2>0</A2><A3>0</A3><B1>0</B1><B2>0</B2><B3>0</B3><C1>0</C1><C2>0</C2><C3>0</C3><TURNO>0</TURNO></partida>");
+                fw.close();
+            }
+
+        } catch (IOException ex) {
+            Logger.getLogger(FParser.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         try ( FileInputStream fis = new FileInputStream(archivo);  InputStreamReader isr = new InputStreamReader(fis, "UTF-8")) {
 

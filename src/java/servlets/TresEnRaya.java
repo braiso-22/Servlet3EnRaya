@@ -6,6 +6,7 @@ package servlets;
  */
 import clases.Controller;
 import clases.FParser;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -100,7 +101,7 @@ public class TresEnRaya extends HttpServlet {
                 }
                 if (cont.ganaO()) {
 
-                     response.setContentType("text/html");
+                    response.setContentType("text/html");
                     out.println("<script type=\"text/javascript\">");
                     out.println("alert('Gana O');");
                     out.println("</script>");
@@ -142,14 +143,12 @@ public class TresEnRaya extends HttpServlet {
                     + "            height: 20vh;"
                     + "            font-size: 15vh;"
                     + "        }"
-                    + ""
                     + "        table.restart {"
                     + "            margin: auto;"
                     + "            border: 3px solid blue;"
                     + "            width: 50%;"
                     + "            padding: 10px;"
                     + "        }"
-                    + ""
                     + "        input.restart {"
                     + "            width: 100%;"
                     + "            height: 10vh;"
