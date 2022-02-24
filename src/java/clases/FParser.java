@@ -167,8 +167,10 @@ public class FParser {
 
     }
 
+    // Devuelve los valores de todas las casillas. Exluye el turno.
     public int[] getCasillas() {
 
+        // Todo el XML menos la última etiqueta, que es <TURNO>.
         int nCasillas = casillas.getLength() - 1;
 
         int[] casillas = new int[nCasillas];
@@ -181,6 +183,7 @@ public class FParser {
 
     }
 
+    // Establece en la etiqueta del XML indicada, el valor indicado.
     public void setValor(int casilla, int valor) {
 
         casillas.item(casilla).setTextContent(String.valueOf(valor));
@@ -189,12 +192,14 @@ public class FParser {
 
     }
 
+    // Devuelve el turno actual.
     public int getTurno() {
-
+        
         return Integer.parseInt(casillas.item(9).getTextContent());
 
     }
 
+    // Establece el valor de todas las etiquetas del XML a 0.
     public void clear() {
 
         for (int i = 0; i < 10; i++) {
@@ -205,13 +210,16 @@ public class FParser {
 
     }
 
+    // Vuelca el contenido actual de la variable "doc" en el XML.
     private void guardar() {
 
         try {
 
+            // Se prepara el transformer para guardar en archivo.
             TransformerFactory tFactory = TransformerFactory.newInstance();
             Transformer transformer = tFactory.newTransformer();
             transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+            // Se guarda "doc" en "archivo".
             transformer.transform(new DOMSource(doc), new StreamResult(archivo));
 
         } catch (TransformerConfigurationException ex) {
