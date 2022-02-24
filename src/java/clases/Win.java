@@ -6,7 +6,7 @@ package clases;
 
 /**
  *
- * @author brais.fernandezvazqu
+ * @author xabier.barreiroalber
  */
 public class Win {
 
