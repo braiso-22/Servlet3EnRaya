@@ -6,11 +6,8 @@ package servlets;
  */
 import clases.Controller;
 import clases.FParser;
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Enumeration;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,14 +21,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns = {"/TresEnRaya"})
 public class TresEnRaya extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+    /*
+        Metodo que recibe la petición con sus parametros y genera un HTML
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -39,8 +30,11 @@ public class TresEnRaya extends HttpServlet {
         Controller cont = new Controller();
 
         try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
             try {
+                /* 
+                    Variables que buscan dentro de la petición los parametros 
+                    para cada casilla que se puede pulsar
+                 */
                 String a1 = request.getParameter("A1");
                 String a2 = request.getParameter("A2");
                 String a3 = request.getParameter("A3");
@@ -54,6 +48,17 @@ public class TresEnRaya extends HttpServlet {
 
                 boolean hayParametro = false;
 
+                /*
+                    En cada uno de estos if se comprueba que el parametro no
+                    está a null (lo que quiere decir que ha sido pulsada en web)
+                    y que además esa casilla no tiene ya un valor en el 
+                    controlador.
+                
+                    Si la condición es true se procede a guardar en el
+                    controlador la casilla que se ha pulsado y que hay parametro
+                    para evitar que se pase un turno la primera vez que se abre
+                    el juego.
+                 */
                 if (a1 != null && cont.isFree(FParser.A1)) {
                     cont.pasaCasilla(FParser.A1);
                     hayParametro = true;
@@ -91,6 +96,11 @@ public class TresEnRaya extends HttpServlet {
                     hayParametro = true;
                 }
                 boolean ganado = false;
+
+                /*
+                    Aquí se comprueba si ha ganado el jugador X o el O y se
+                    manda al navegador una alerta de quien es el ganador
+                 */
                 if (cont.ganaX()) {
                     response.setContentType("text/html");
                     out.println("<script type=\"text/javascript\">");
@@ -109,6 +119,13 @@ public class TresEnRaya extends HttpServlet {
                     cont.limpiaCasillas();
                 }
 
+                /*
+                    Aquí se comprueba si es el fin de la partida o si se ha 
+                    pulsado restart para borrar las casillas en el controlador.
+                    
+                    Si no es ninguna de estas entonces se pasa turno si se ha
+                    pulsado un boton y no se ha ganado
+                 */
                 if (cont.finDePartida() || restart != null) {
                     cont.limpiaCasillas();
                 } else {
@@ -120,6 +137,14 @@ public class TresEnRaya extends HttpServlet {
 
             }
 
+            /*
+                Este es el codigo html que se envia en respuesta a la petición, 
+                lo tenemos en String para poder modificarlo según las jugadas 
+                que se vayan ejecutando. 
+                
+                Donde haya <input type=submit name=A1 value=\u200e> el \u200e es
+                un espacio en blanco y se sustituye por X o O en cada turno.
+             */
             String cadena1 = "<!DOCTYPE html>"
                     + "<html>"
                     + "<head>"
@@ -188,7 +213,9 @@ public class TresEnRaya extends HttpServlet {
                     + "    </form>"
                     + "</body>"
                     + "</html>";
-
+            
+            // Aquí es donde se mofican los valores del html desde el controlador
+            
             cadena1 = cont.cambiaValores(cadena1);
             out.println(cadena1);
 
@@ -206,6 +233,9 @@ public class TresEnRaya extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    /*
+        Metodo que recibe la petición del navegador cuando es enviada por GET
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -219,6 +249,9 @@ public class TresEnRaya extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     */
+    /*
+        Metodo que recibe la petición del navegador cuando es enviada por POST
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
